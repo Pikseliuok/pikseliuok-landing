@@ -1,14 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import logo from "../../public/logo.png"; // Import the logo image
+import logo from "../../public/logo.png";
 
-const targetUnixTime = 1744988400; // Example Unix timestamp (January 1, 2025)
+const targetUnixTime = 1744988400;
 
 const App = () => {
   const [countdown, setCountdown] = useState(
     targetUnixTime - Math.floor(Date.now() / 1000)
-  ); // Set initial countdown value
+  );
 
   useEffect(() => {
     if (countdown > 0) {
