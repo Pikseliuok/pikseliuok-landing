@@ -4,6 +4,7 @@ import "./globals.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Loader from "./components/Loader";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -38,9 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} antialiased`}>
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <Loader>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </Loader>
       </body>
     </html>
   );

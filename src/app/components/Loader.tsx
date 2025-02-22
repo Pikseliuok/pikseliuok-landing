@@ -1,13 +1,14 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import "../../styles/loader.css";
 
 const gridSize = 20;
 
 interface LoaderProps {
-  onComplete: () => void;
+  children: React.ReactNode;
 }
 
-const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
+const Loader: React.FC<LoaderProps> = ({ children }) => {
   interface Pixel {
     id: number;
     x: number;
@@ -17,6 +18,7 @@ const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
 
   const [pixels, setPixels] = useState<Pixel[]>([]);
   const [fadeOut, setFadeOut] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,28 +40,36 @@ const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
     setTimeout(() => {
       clearInterval(interval);
       setFadeOut(true);
-      setTimeout(onComplete, 1000); // Match the CSS transition duration
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000); // Match the CSS transition duration
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [onComplete]);
+  });
 
   return (
-    <div className={`loader-overlay ${fadeOut ? "fade-out" : ""}`}>
-      <div className="loader">
-        {pixels.map((pixel) => (
-          <div
-            key={pixel.id}
-            className="pixel"
-            style={{
-              left: pixel.x,
-              top: pixel.y,
-              backgroundColor: pixel.color,
-            }}
-          ></div>
-        ))}
-      </div>
-    </div>
+    <>
+      {loading ? (
+        <div className={`loader-overlay ${fadeOut ? "fade-out" : ""}`}>
+          <div className="loader">
+            {pixels.map((pixel) => (
+              <div
+                key={pixel.id}
+                className="pixel"
+                style={{
+                  left: pixel.x,
+                  top: pixel.y,
+                  backgroundColor: pixel.color,
+                }}
+              ></div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        children
+      )}
+    </>
   );
 };
 
