@@ -44,7 +44,7 @@ const App = () => {
           <div className="mb-4">
             <Image src={logo} alt="Pikseliuok Logo" width={150} height={150} />
           </div>
-          <div>
+          <div className="max-w-md">
             <h1 className="text-4xl font-bold mb-4">Pikseliuok</h1>
             <p className="text-lg mb-4 text-center md:text-left">
               Tai{" "}
@@ -62,7 +62,7 @@ const App = () => {
             </p>
           </div>
         </div>
-        <div className="relative bg-gradient-to-br bg-background p-8 rounded-2xl shadow-lg w-full md:w-1/2 lg:w-1/2">
+        <div className="relative bg-gradient-to-br bg-background p-8 rounded-2xl shadow-lg w-auto">
           <div className="absolute inset-0 bg-gradient-radial to-transparent rounded-full blur-3xl" />
           <div className="relative z-10 flex flex-col items-center space-y-4 text-center text-4xl font-bold">
             <span className="text-lg font-semibold">
