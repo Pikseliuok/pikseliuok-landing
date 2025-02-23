@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "../../public/logo.png";
 
-const targetUnixTime = 1744988400;
+const targetUnixTime = 1741968000;
 
 const App = () => {
   const [countdown, setCountdown] = useState(
