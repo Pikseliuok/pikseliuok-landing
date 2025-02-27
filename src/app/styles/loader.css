@@ -44,3 +44,26 @@
   pointer-events: none;
   transition: opacity 1s ease-in-out;
 }
+
+@keyframes blink {
+  0% {
+    content: "tuoj";
+  }
+  25% {
+    content: "tuoj.";
+  }
+  50% {
+    content: "tuoj..";
+  }
+  75% {
+    content: "tuoj...";
+  }
+  100% {
+    content: "tuoj";
+  }
+}
+
+.loading-text::before {
+  content: "";
+  animation: blink 3s infinite steps(1, end);
+}

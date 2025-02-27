@@ -1,9 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import localFont from "next/font/local";
 import Image from "next/image";
 import logo from "../../public/logo.png";
 
 const targetUnixTime = 1741968000;
+const vcrOSDFont = localFont({ src: "../fonts/VCR_OSD_MONO.ttf" });
+
 
 const App = () => {
   const [countdown, setCountdown] = useState(
@@ -68,26 +71,34 @@ const App = () => {
             <span className="text-lg font-semibold">
               iki projekto pradžios liko
             </span>
-            <div className="flex flex-wrap justify-center md:space-x-6 lg:space-x-8">
-              {[
-                { value: days, label: "Dienos" },
-                { value: hours, label: "Valandos" },
-                { value: minutes, label: "Minutės" },
-                { value: secs, label: "Sekundės" },
-              ].map((unit, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center justify-center backdrop-blur-lg p-4 rounded-xl shadow-inner m-2"
-                >
-                  <span className="text-6xl">
-                    {unit.value.toString().padStart(2, "0")}
-                  </span>
-                  <span className="mt-2 text-sm tracking-wider uppercase">
-                    {unit.label}
-                  </span>
-                </div>
-              ))}
-            </div>
+            {countdown > 0 ? (
+              <div className="flex flex-wrap justify-center md:space-x-6 lg:space-x-8">
+                {[
+                  { value: days, label: "Dienos" },
+                  { value: hours, label: "Valandos" },
+                  { value: minutes, label: "Minutės" },
+                  { value: secs, label: "Sekundės" },
+                ].map((unit, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center backdrop-blur-lg p-4 rounded-xl shadow-inner m-2"
+                  >
+                    <span className="text-6xl">
+                      {unit.value.toString().padStart(2, "0")}
+                    </span>
+                    <span className="mt-2 text-sm tracking-wider uppercase">
+                      {unit.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center backdrop-blur-lg p-4 rounded-xl shadow-inner m-2">
+                <span
+                  className={`text-4xl tracking-wider loading-text ${vcrOSDFont.className}`}
+                ></span>
+              </div>
+            )}
           </div>
         </div>
       </>

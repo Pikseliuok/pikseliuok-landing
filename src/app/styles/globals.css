@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "VCR OSD Mono";
+  src: url("/fonts/VCR_OSD_MONO.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-vcr {
+  font-family: "VCR OSD Mono", monospace;
+}
