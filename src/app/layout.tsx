@@ -13,6 +13,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pikseliuok.lt"),
   openGraph: {
     type: "website",
     locale: "lt_LT",
@@ -20,8 +21,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/logo.png",
-        width: 1200,
-        height: 630,
+        width: 914,
+        height: 915,
         alt: "Pikseliuok yra r/place įkvėptas projektas, skirtas Lietuvai. Jame galima padėti pikselius ant bendros drobės, kuriant bendrą meno kūrinį.",
       },
     ],
@@ -29,6 +30,11 @@ export const metadata: Metadata = {
   title: "Pikseliuok",
   description:
     "Pikseliuok yra r/place įkvėptas projektas, skirtas Lietuvai. Jame galima padėti pikselius ant bendros drobės, kuriant bendrą meno kūrinį.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+    shortcut: "/logo.png",
+  },
 };
 
 export default function RootLayout({
