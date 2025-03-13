@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import Image from "next/image";
 import logo from "../../public/logo.png";
 
-const targetUnixTime = 1741968000;
+const targetUnixTime = 1741971600;
 const vcrOSDFont = localFont({ src: "../fonts/VCR_OSD_MONO.ttf" });
 
 
