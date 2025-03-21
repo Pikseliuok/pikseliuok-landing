@@ -1,8 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import localFont from "next/font/local";
-import Image from "next/image";
-import logo from "../../public/logo.png";
+import React from "react";
 import CanvasViewer from "./components/CanvasViewer";
 import DownloadItem from "./components/DownloadItem";
 import StatCard from "./components/StatCard";

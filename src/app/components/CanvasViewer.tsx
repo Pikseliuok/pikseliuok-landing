@@ -9,8 +9,8 @@ interface CanvasViewerProps {
 const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [transformOrigin, setTransformOrigin] = useState("center center");
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [showCoords, setShowCoords] = useState(false);
+  // const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  // const [showCoords, setShowCoords] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -22,7 +22,8 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
     setIsTouchDevice(
       "ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
-        (navigator as any).msMaxTouchPoints > 0
+        ("msMaxTouchPoints" in navigator &&
+          (navigator as Navigator).maxTouchPoints > 0)
     );
   }, []);
 
@@ -72,24 +73,24 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
     }, 150); // Same duration as the CSS transition
   };
 
-  // Calculate image coordinates from pointer position
-  const calculateImageCoords = (clientX: number, clientY: number) => {
-    if (!containerRef.current) return { x: 0, y: 0 };
+  // // Calculate image coordinates from pointer position
+  // const calculateImageCoords = (clientX: number, clientY: number) => {
+  //   if (!containerRef.current) return { x: 0, y: 0 };
 
-    const { left, top, width, height } =
-      containerRef.current.getBoundingClientRect();
-    const x = clientX - left;
-    const y = clientY - top;
+  //   const { left, top, width, height } =
+  //     containerRef.current.getBoundingClientRect();
+  //   const x = clientX - left;
+  //   const y = clientY - top;
 
-    // Map to 0-1000 range
-    let pixelX = Math.floor((x / width) * 1000);
-    let pixelY = Math.floor((y / height) * 1000);
+  //   // Map to 0-1000 range
+  //   const pixelX = Math.floor((x / width) * 1000);
+  //   const pixelY = Math.floor((y / height) * 1000);
 
-    return {
-      x: Math.max(0, Math.min(pixelX, 1000)),
-      y: Math.max(0, Math.min(pixelY, 1000)),
-    };
-  };
+  //   return {
+  //     x: Math.max(0, Math.min(pixelX, 1000)),
+  //     y: Math.max(0, Math.min(pixelY, 1000)),
+  //   };
+  // };
 
   // Handle zooming
   const handleZoom = (clientX: number, clientY: number) => {
@@ -105,8 +106,8 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
       setTransformOrigin(`${percentX}% ${percentY}%`);
 
       // Update coordinates display
-      const coords = calculateImageCoords(clientX, clientY);
-      setCursorPos(coords);
+      // const coords = calculateImageCoords(clientX, clientY);
+      // setCursorPos(coords);
     }
 
     setIsZoomed(true);
@@ -119,8 +120,8 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
     const rect = containerRef.current.getBoundingClientRect();
 
     // Calculate coordinates for display
-    const coords = calculateImageCoords(e.clientX, e.clientY);
-    setCursorPos(coords);
+    // const coords = calculateImageCoords(e.clientX, e.clientY);
+    // setCursorPos(coords);
 
     if (isZoomed) {
       const rawX = Math.max(rect.left, Math.min(e.clientX, rect.right));
@@ -185,8 +186,8 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
     const rect = containerRef.current.getBoundingClientRect();
 
     // Update coordinates display
-    const coords = calculateImageCoords(touch.clientX, touch.clientY);
-    setCursorPos(coords);
+    // const coords = calculateImageCoords(touch.clientX, touch.clientY);
+    // setCursorPos(coords);
 
     // Clamp touch coordinates to container boundaries
     const rawX = Math.max(rect.left, Math.min(touch.clientX, rect.right));
@@ -222,13 +223,6 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
       >
-        {/* Coordinates display */}
-        {showCoords && (
-          <div className="absolute top-[-30px] left-0 bg-black bg-opacity-70 text-white px-3 py-1 text-sm font-mono rounded-md z-10">
-            Coordinates: {cursorPos.x}, {cursorPos.y}
-          </div>
-        )}
-
         {/* Canvas image with zoom transform */}
         <div
           ref={imageContainerRef}
