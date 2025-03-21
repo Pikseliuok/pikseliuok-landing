@@ -213,8 +213,10 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
     <div className="flex flex-col items-center w-full">
       <div
         ref={containerRef}
-        className="w-full max-w-[1000px] relative overflow-hidden" // Add overflow-hidden to parent container
-        style={{ aspectRatio: "1/1" }} // Add fixed aspect ratio
+        className={`w-full max-w-[1000px] relative overflow-hidden ${
+          isZoomed ? "cursor-crosshair" : "cursor-zoom-in"
+        }`}
+        style={{ aspectRatio: "1/1" }}
         onPointerMove={handlePointerMove}
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}

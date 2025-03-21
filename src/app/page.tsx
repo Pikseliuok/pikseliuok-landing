@@ -40,7 +40,7 @@ const App = () => {
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4">Pikseliuok 2025</h1>
           <p className="text-lg mb-2">
-            1000×1000 drobė. 32 spalvos.{" "}
+            1000×1000 drobė. 34 spalvos.{" "}
             <span className="font-semibold">5,645</span> kūrėjai.
           </p>
         </div>
@@ -110,7 +110,10 @@ const App = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <StatCard title="Iš viso pikselių" value="1,340,885" />
               <StatCard title="Registruoti vartotojai" value="5,645" />
-              <StatCard title="Maksimalus vartotojų skaičius" value="~850" />
+              <StatCard
+                title="Daugiausia prisijungusių vienu metu"
+                value="~850"
+              />
               <StatCard title="Sunaudota duomenų" value="378 GB" />
             </div>
 
