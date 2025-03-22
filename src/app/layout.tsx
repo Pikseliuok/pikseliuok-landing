@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 
@@ -50,6 +51,7 @@ export default function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
         </Loader>
+        <Analytics />
       </body>
     </html>
   );
