@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 
 interface CanvasViewerProps {
@@ -27,51 +27,97 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
     );
   }, []);
 
-  // Prevent scroll on page when zoomed on mobile
+  // Prevent scroll on page when zoomed
   useEffect(() => {
-    const preventTouchScroll = (e: TouchEvent) => {
+    const preventScroll = (e: Event) => {
       if (isZoomed) {
         e.preventDefault();
         e.stopPropagation();
       }
     };
 
-    if (isTouchDevice && isZoomed) {
+    if (isZoomed) {
       document.body.style.overflow = "hidden";
       document.body.style.touchAction = "none";
-      document.documentElement.style.overscrollBehavior = "none"; // Prevent pull-to-refresh
+      document.documentElement.style.overscrollBehavior = "none";
 
-      // Capture the events at the document level to ensure they're caught
-      document.addEventListener("touchmove", preventTouchScroll, {
+      // Capture touch events for mobile
+      document.addEventListener("touchmove", preventScroll as EventListener, {
         passive: false,
         capture: true,
       });
-      document.addEventListener("touchstart", preventTouchScroll, {
+      document.addEventListener("touchstart", preventScroll as EventListener, {
+        passive: false,
+        capture: true,
+      });
+
+      // Capture mouse events for desktop
+      document.addEventListener("wheel", preventScroll as EventListener, {
+        passive: false,
+        capture: true,
+      });
+      document.addEventListener("mousedown", preventScroll as EventListener, {
         passive: false,
         capture: true,
       });
     }
 
     return () => {
+      // Restore styles when zoom is disabled
       document.body.style.overflow = "";
       document.body.style.touchAction = "";
       document.documentElement.style.overscrollBehavior = "";
-      document.removeEventListener("touchmove", preventTouchScroll, {
+
+      // Remove event listeners
+      document.removeEventListener(
+        "touchmove",
+        preventScroll as EventListener,
+        {
+          capture: true,
+        }
+      );
+      document.removeEventListener(
+        "touchstart",
+        preventScroll as EventListener,
+        {
+          capture: true,
+        }
+      );
+      document.removeEventListener("wheel", preventScroll as EventListener, {
         capture: true,
       });
-      document.removeEventListener("touchstart", preventTouchScroll, {
-        capture: true,
-      });
+      document.removeEventListener(
+        "mousedown",
+        preventScroll as EventListener,
+        {
+          capture: true,
+        }
+      );
     };
-  }, [isTouchDevice, isZoomed]);
+  }, [isZoomed]);
 
   // Reset zoom state
-  const resetZoom = () => {
+  const resetZoom = useCallback(() => {
     setIsZoomed(false);
     setTimeout(() => {
       setTransformOrigin("center center");
     }, 150); // Same duration as the CSS transition
-  };
+  }, []);
+
+  useEffect(() => {
+    // Only needed for desktop when zoomed
+    if (isZoomed && !isTouchDevice) {
+      const handleGlobalMouseUp = () => {
+        resetZoom();
+      };
+
+      document.addEventListener("mouseup", handleGlobalMouseUp);
+
+      return () => {
+        document.removeEventListener("mouseup", handleGlobalMouseUp);
+      };
+    }
+  }, [isZoomed, isTouchDevice, resetZoom]);
 
   // // Calculate image coordinates from pointer position
   // const calculateImageCoords = (clientX: number, clientY: number) => {
