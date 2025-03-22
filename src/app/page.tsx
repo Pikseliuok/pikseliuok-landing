@@ -41,7 +41,7 @@ const App = () => {
           <h1 className="text-4xl font-bold mb-4">Pikseliuok 2025</h1>
           <p className="text-lg mb-2">
             1000×1000 drobė. 34 spalvos.{" "}
-            <span className="font-semibold">5,645</span> kūrėjai.
+            <span className="font-semibold">6,244</span> kūrėjai.
           </p>
         </div>
 
@@ -79,13 +79,13 @@ const App = () => {
                 filename="final.png"
                 path="/placemap.png"
                 downloadName="final.png"
-                size="(000KB)"
+                size="(1000KB)"
               />
               <DownloadItem
                 filename="timelapse.mp4"
                 path="/timelapse.mp4"
                 downloadName="timelapse.mp4"
-                size="(000MB)"
+                size="(66.2MB)"
               />
               {/* <DownloadItem
                 filename="pixels.log (anonimizuota)"
@@ -108,13 +108,13 @@ const App = () => {
           <h2 className="text-2xl font-bold mb-4 text-center">Statistika</h2>
           <div className="max-w-2xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <StatCard title="Iš viso pikselių" value="1,340,885" />
-              <StatCard title="Registruoti vartotojai" value="5,645" />
+              <StatCard title="Iš viso pikselių" value="1,755,668" />
+              <StatCard title="Registruoti vartotojai" value="6,244" />
               <StatCard
                 title="Daugiausia prisijungusių vienu metu"
                 value="~850"
               />
-              <StatCard title="Sunaudota duomenų" value="378 GB" />
+              <StatCard title="Sunaudota duomenų" value="401 GB" />
             </div>
 
             <h3 className="text-2xl font-bold mb-4 text-center">
