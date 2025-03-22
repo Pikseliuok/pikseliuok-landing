@@ -76,10 +76,10 @@ const App = () => {
           <div className="max-w-2xl mx-auto">
             <ul className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 space-y-2">
               <DownloadItem
-                filename="final.png"
+                filename="placemap.png"
                 path="/placemap.png"
                 downloadName="placemap.png"
-                size="(0.93MB)"
+                size="(0.98MB)"
               />
               <DownloadItem
                 filename="timelapse.mp4"
@@ -97,7 +97,7 @@ const App = () => {
                 filename="palette.json"
                 path="/palette.json"
                 downloadName="palette.json"
-                size="(2.9KB)"
+                size="(2.91KB)"
               />
             </ul>
           </div>
@@ -108,13 +108,13 @@ const App = () => {
           <h2 className="text-2xl font-bold mb-4 text-center">Statistika</h2>
           <div className="max-w-2xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <StatCard title="Iš viso pikselių" value="1,755,668" />
+              <StatCard title="Iš viso pikselių" value="1,899,950" />
               <StatCard title="Registruoti vartotojai" value="6,244" />
               <StatCard
                 title="Daugiausia prisijungusių vienu metu"
                 value="~850"
               />
-              <StatCard title="Sunaudota duomenų" value="401 GB" />
+              <StatCard title="Sunaudota duomenų" value="397 GB" />
             </div>
 
             <h3 className="text-2xl font-bold mb-4 text-center">
