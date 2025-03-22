@@ -8,7 +8,7 @@ const Footer = () => {
         <p className="mt-2 text-gray-600 text-sm">
           Made with ❤️ by{" "}
           <a
-            href="https://discord.com/users/213366470556516354"
+            href="https://github.com/Karolinskis"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 hover:text-blue-700 hover:underline transition-colors"
