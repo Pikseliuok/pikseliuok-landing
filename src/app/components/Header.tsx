@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { FaInstagram, FaDiscord } from "react-icons/fa";
+import { FaInstagram, FaDiscord, FaGithub } from "react-icons/fa";
 import logo from "../../../public/logo.png";
 import Link from "next/link";
 
@@ -35,6 +35,18 @@ const Header = () => {
                 <FaDiscord
                   size={24}
                   className="text-blue-500 hover:text-blue-600 transition-colors cursor-pointer"
+                />
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={"https://github.com/Pikseliuok"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub
+                  size={24}
+                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
                 />
               </Link>
             </li>
