@@ -78,8 +78,8 @@ const App = () => {
               <DownloadItem
                 filename="final.png"
                 path="/placemap.png"
-                downloadName="final.png"
-                size="(1000KB)"
+                downloadName="placemap.png"
+                size="(0.93MB)"
               />
               <DownloadItem
                 filename="timelapse.mp4"
@@ -87,18 +87,18 @@ const App = () => {
                 downloadName="timelapse.mp4"
                 size="(66.2MB)"
               />
-              {/* <DownloadItem
-                filename="pixels.log (anonimizuota)"
-                path="/pixels.log"
-                downloadName="pixels.log"
-                size="(256MB)"
+              <DownloadItem
+                filename="pixels.sanit.log (anonimizuota)"
+                path="/pixels.sanit.log"
+                downloadName="pixels.sanit.log"
+                size="(87.2MB)"
               />
               <DownloadItem
                 filename="palette.json"
                 path="/palette.json"
                 downloadName="palette.json"
-                size="(2.7KB)"
-              /> */}
+                size="(2.9KB)"
+              />
             </ul>
           </div>
         </div>
