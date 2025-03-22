@@ -76,10 +76,10 @@ const App = () => {
           <div className="max-w-2xl mx-auto">
             <ul className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 space-y-2">
               <DownloadItem
-                filename="final.png"
+                filename="placemap.png"
                 path="/placemap.png"
-                downloadName="final.png"
-                size="(1000KB)"
+                downloadName="placemap.png"
+                size="(0.98MB)"
               />
               <DownloadItem
                 filename="timelapse.mp4"
@@ -87,18 +87,18 @@ const App = () => {
                 downloadName="timelapse.mp4"
                 size="(66.2MB)"
               />
-              {/* <DownloadItem
-                filename="pixels.log (anonimizuota)"
-                path="/pixels.log"
-                downloadName="pixels.log"
-                size="(256MB)"
+              <DownloadItem
+                filename="pixels.sanit.log (anonimizuota)"
+                path="/pixels.sanit.log"
+                downloadName="pixels.sanit.log"
+                size="(87.2MB)"
               />
               <DownloadItem
                 filename="palette.json"
                 path="/palette.json"
                 downloadName="palette.json"
-                size="(2.7KB)"
-              /> */}
+                size="(2.91KB)"
+              />
             </ul>
           </div>
         </div>
@@ -108,13 +108,13 @@ const App = () => {
           <h2 className="text-2xl font-bold mb-4 text-center">Statistika</h2>
           <div className="max-w-2xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <StatCard title="Iš viso pikselių" value="1,755,668" />
+              <StatCard title="Iš viso pikselių" value="1,899,950" />
               <StatCard title="Registruoti vartotojai" value="6,244" />
               <StatCard
                 title="Daugiausia prisijungusių vienu metu"
                 value="~850"
               />
-              <StatCard title="Sunaudota duomenų" value="401 GB" />
+              <StatCard title="Sunaudota duomenų" value="397 GB" />
             </div>
 
             <h3 className="text-2xl font-bold mb-4 text-center">
