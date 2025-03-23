@@ -40,7 +40,7 @@ const App = () => {
     { username: "Laimeg", pixelCount: "11.275" },
     { username: "B392", pixelCount: "11.111" },
     { username: "galkamvyno", pixelCount: "10.821" },
-    { username: "killer11x", pixelCount: "10.68" },
+    { username: "killer11x", pixelCount: "10.680" },
     { username: "RealTAS", pixelCount: "10.371" },
     { username: "Nim", pixelCount: "9.952" },
     { username: "zygism16", pixelCount: "9.828" },
