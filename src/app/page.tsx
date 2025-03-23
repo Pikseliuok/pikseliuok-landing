@@ -124,6 +124,25 @@ const App = () => {
           </div>
         </div>
 
+        {/* Feedback Form */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold mb-4 text-center">Jūsų nuomonė</h2>
+          <div className="max-w-2xl mx-auto text-center">
+            <p className="mb-4">
+              Norime sužinoti jūsų nuomonę, kad galėtume tobulinti ateities
+              renginius. Užpildyti užtruks tik kelias minutes.
+            </p>
+            <a
+              href="https://forms.gle/oBqApTciQXWN9RU38"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors"
+            >
+              Pasidalinti atsiliepimais
+            </a>
+          </div>
+        </div>
+
         <p className="text-sm text-gray-400 dark:text-gray-600 italic text-center mt-10 mb-4">
           Tai dar ne pabaiga...
         </p>
