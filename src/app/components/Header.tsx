@@ -30,7 +30,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                href={"https://discord.gg/nwNAWVSuur"}
+                href={"https://discord.gg/jCw8vg93xH"}
                 target="_blank"
                 rel="noopener noreferrer"
               >
