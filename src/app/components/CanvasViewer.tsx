@@ -63,12 +63,10 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
     }
 
     return () => {
-      // Restore styles when zoom is disabled
       document.body.style.overflow = "";
       document.body.style.touchAction = "";
       document.documentElement.style.overscrollBehavior = "";
 
-      // Remove event listeners
       document.removeEventListener(
         "touchmove",
         preventScroll as EventListener,
@@ -161,7 +159,6 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
 
   // Mouse/Pointer event handlers
   const handlePointerMove = (e: React.PointerEvent) => {
-    // Get container bounds
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
 
@@ -173,13 +170,11 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
       const rawX = Math.max(rect.left, Math.min(e.clientX, rect.right));
       const rawY = Math.max(rect.top, Math.min(e.clientY, rect.bottom));
 
-      // Calculate percentages for transform-origin
       const offsetX = rawX - rect.left;
       const offsetY = rawY - rect.top;
       const percentX = (offsetX / rect.width) * 100;
       const percentY = (offsetY / rect.height) * 100;
 
-      // Update transform origin to follow the mouse
       setTransformOrigin(`${percentX}% ${percentY}%`);
     }
   };
@@ -193,10 +188,8 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
   };
 
   const handlePointerUp = () => {
-    // Only for desktop, no changes needed here
     if (isTouchDevice) return;
 
-    // Keeping the existing behavior of exiting zoom on mouse up for desktop
     if (!isTouchDevice && isZoomed) {
       resetZoom();
     }
@@ -204,7 +197,6 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
 
   // Touch-specific handlers
   const handleTouchStart = (e: React.TouchEvent) => {
-    // Prevent default browser behavior for touch events
     if (isZoomed) {
       e.preventDefault();
     }
@@ -218,7 +210,6 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    // Always prevent default when zoomed to avoid scrolling
     if (isZoomed) {
       e.preventDefault();
     }
@@ -227,7 +218,6 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
 
     const touch = e.touches[0];
 
-    // Get container bounds
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
 
@@ -244,7 +234,6 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
     const percentX = (offsetX / rect.width) * 100;
     const percentY = (offsetY / rect.height) * 100;
 
-    // Update transform origin to follow the touch
     setTransformOrigin(`${percentX}% ${percentY}%`);
   };
 
@@ -279,7 +268,7 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
             transform: isZoomed ? `scale(${zoomLevel})` : "scale(1)",
             transformOrigin: transformOrigin,
             transition: "transform 150ms ease-out",
-            pointerEvents: isZoomed ? "none" : "auto", // Disable pointer events when zoomed
+            pointerEvents: isZoomed ? "none" : "auto",
           }}
         >
           <Image

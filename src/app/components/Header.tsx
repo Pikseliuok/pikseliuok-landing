@@ -1,8 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import { FaInstagram, FaDiscord, FaGithub } from "react-icons/fa";
-import logo from "../../../public/logo.png";
+
 import Link from "next/link";
+
+const logo = "/logo.png";
 
 const Header = () => {
   return (
