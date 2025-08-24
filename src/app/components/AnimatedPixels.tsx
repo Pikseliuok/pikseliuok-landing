@@ -60,7 +60,7 @@ const AnimatedPixels: React.FC<AnimatedPixelsProps> = ({
     return (
       <div
         className="loader-overlay -z-50"
-        style={{ zIndex: 0, pointerEvents: "none", opacity: 0.3 }}
+        style={{ pointerEvents: "none", opacity: 0.3 }}
       >
         <div className="loader">
           {pixels.map((pixel) => (
