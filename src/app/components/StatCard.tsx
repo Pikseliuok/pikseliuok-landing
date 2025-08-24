@@ -7,7 +7,7 @@ interface StatCardProps {
 
 const StatCard = ({ title, value }: StatCardProps) => {
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
+    <div className="backdrop-blur-lg bg-white/60 dark:bg-black/60 dark:shadow-black/30 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-4">
       <h3 className="font-bold mb-2">{title}</h3>
       <p className="text-xl">{value}</p>
     </div>

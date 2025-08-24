@@ -48,9 +48,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.variable} antialiased`}>
         <AnimatedPixels asBackground />
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <div className="relative z-10 flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-grow flex justify-center items-start px-4 py-8">
+            <div className="backdrop-blur-lg rounded-2xl shadow-2xl">
+              {children}
+            </div>
+          </main>
+          <Footer />
+        </div>
         <Analytics />
         <SpeedInsights />
       </body>
