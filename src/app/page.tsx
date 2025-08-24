@@ -63,7 +63,7 @@ const App = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center backdrop-blur-lg rounded-2xl text-foreground p-4">
       <div className="container mx-auto py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4">Pikseliuok 2025</h1>
@@ -121,10 +121,10 @@ const App = () => {
             <h3 className="text-2xl font-bold mb-4 mt-8 text-center">
               TOP 25 pikseliuotojai
             </h3>
-            <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
+            <div className="backdrop-blur-lg bg-white/60 dark:bg-black/60 dark:shadow-black/30 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-4">
               <div className="max-h-[500px] overflow-y-auto">
                 <table className="w-full">
-                  <thead className="sticky top-0 bg-gray-100 dark:bg-gray-800">
+                  <thead className="sticky top-0 backdrop-blur-lg bg-white/80 dark:bg-black/80">
                     <tr className="border-b border-gray-300 dark:border-gray-700">
                       <th className="text-left py-2 px-4">#</th>
                       <th className="text-left py-2 px-4">Vartotojas</th>
@@ -162,9 +162,9 @@ const App = () => {
         </div>
 
         {/* Feedback Form */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold mb-4 text-center">Jūsų nuomonė</h2>
-          <div className="max-w-2xl mx-auto text-center">
+        <div className="mt-12 flex justify-center">
+          <div className="backdrop-blur-lg bg-white/60 dark:bg-black/60 rounded-2xl shadow-xl dark:shadow-black/30 border border-gray-200 dark:border-gray-700 p-8 max-w-2xl w-full text-center">
+            <h2 className="text-2xl font-bold mb-4">Jūsų nuomonė</h2>
             <p className="mb-4">
               Norime sužinoti jūsų nuomonę, kad galėtume tobulinti ateities
               renginius. Užpildyti užtruks tik kelias minutes.
@@ -173,7 +173,7 @@ const App = () => {
               href="https://forms.gle/oBqApTciQXWN9RU38"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors"
+              className="inline-block px-6 py-3 rounded-xl font-semibold text-base text-foreground bg-white/40 dark:bg-black/40 backdrop-blur-md border border-gray-300 dark:border-gray-700 shadow transition-all duration-200 hover:bg-white/60 dark:hover:bg-black/60 hover:shadow-xl hover:scale-105"
             >
               Pasidalinti atsiliepimais
             </a>
@@ -183,8 +183,8 @@ const App = () => {
         {/* Downloads */}
         <div className="mt-12">
           <h2 className="text-2xl font-bold mb-4 text-center">Atsisiuntimai</h2>
-          <div className="max-w-2xl mx-auto">
-            <ul className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 space-y-2">
+          <div className="max-w-2xl mx-auto backdrop-blur-lg bg-white/60 dark:bg-black/60 rounded-2xl shadow-xl dark:shadow-black/30 border border-gray-200 dark:border-gray-700 p-8">
+            <ul className="space-y-2">
               <DownloadItem
                 filename="placemap.png"
                 path="/placemap.png"
