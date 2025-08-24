@@ -4,9 +4,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Loader from "./components/Loader";
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
+import AnimatedPixels from "@/app/components/AnimatedPixels";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -47,11 +47,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} antialiased`}>
-        <Loader>
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </Loader>
+        <AnimatedPixels asBackground />
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
         <Analytics />
         <SpeedInsights />
       </body>
