@@ -16,6 +16,7 @@ jobs:
       contents: read
       security-events: write
       actions: read
+      statuses: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -40,3 +41,8 @@ jobs:
         with:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
+
+      - name: Notify Vercel
+        uses: vercel/repository-dispatch/actions/status@v1
+        with:
+          name: "Vercel - pikseliuok: eslint-checks"

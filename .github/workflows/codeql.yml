@@ -11,12 +11,13 @@ on:
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
-    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    runs-on: "ubuntu-latest"
     permissions:
       security-events: write
       packages: read
       actions: read
       contents: read
+      statuses: write
 
     strategy:
       fail-fast: false
@@ -38,3 +39,8 @@ jobs:
         uses: github/codeql-action/analyze@v4
         with:
           category: "/language:${{matrix.language}}"
+
+      - name: Notify Vercel
+        uses: vercel/repository-dispatch/actions/status@v1
+        with:
+          name: "Vercel - pikseliuok: codeql-checks"
