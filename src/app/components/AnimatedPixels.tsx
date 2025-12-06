@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "@/app/styles/loader.css";
 
 const gridSize = 20;
@@ -10,38 +10,56 @@ interface AnimatedPixelsProps {
   duration?: number; // Only used for loader
 }
 
-interface Pixel {
-  id: number;
-  x: number;
-  y: number;
-  color: string;
-}
-
 const AnimatedPixels: React.FC<AnimatedPixelsProps> = ({
   asBackground = true,
   children,
   duration,
 }) => {
-  const [pixels, setPixels] = useState<Pixel[]>([]);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [fadeOut, setFadeOut] = useState(false);
-  const [loading, setLoading] = useState(duration ? true : false);
+  const [loading, setLoading] = useState(!!duration);
+  const pixelDataRef = useRef<ImageData | null>(null);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const setCanvasDimensions = () => {
+      if (ctx && canvas.width > 0 && canvas.height > 0) {
+        pixelDataRef.current = ctx.getImageData(
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+      }
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      if (pixelDataRef.current) {
+        ctx.putImageData(pixelDataRef.current, 0, 0);
+      }
+    };
+
+    setCanvasDimensions();
+    window.addEventListener("resize", setCanvasDimensions);
+
     const interval = setInterval(() => {
-      setPixels((prevPixels) => [
-        ...prevPixels,
-        {
-          id: prevPixels.length,
-          x:
-            Math.floor(Math.random() * (window.innerWidth / gridSize)) *
-            gridSize,
-          y:
-            Math.floor(Math.random() * (window.innerHeight / gridSize)) *
-            gridSize,
-          color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-        },
-      ]);
-    }, 25);
+      const x =
+        Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize;
+      const y =
+        Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
+      const color = `#${Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, "0")}`;
+
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, gridSize, gridSize);
+    }, 50);
 
     if (duration) {
       setTimeout(() => {
@@ -53,8 +71,15 @@ const AnimatedPixels: React.FC<AnimatedPixelsProps> = ({
       }, duration);
     }
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("resize", setCanvasDimensions);
+    };
   }, [duration]);
+
+  const canvasElement = (
+    <canvas ref={canvasRef} style={{ position: "absolute", top: 0, left: 0 }} />
+  );
 
   if (asBackground) {
     return (
@@ -62,19 +87,7 @@ const AnimatedPixels: React.FC<AnimatedPixelsProps> = ({
         className="loader-overlay -z-50"
         style={{ pointerEvents: "none", opacity: 0.3 }}
       >
-        <div className="loader">
-          {pixels.map((pixel) => (
-            <div
-              key={pixel.id}
-              className="pixel"
-              style={{
-                left: pixel.x,
-                top: pixel.y,
-                backgroundColor: pixel.color,
-              }}
-            ></div>
-          ))}
-        </div>
+        {canvasElement}
       </div>
     );
   }
@@ -82,22 +95,10 @@ const AnimatedPixels: React.FC<AnimatedPixelsProps> = ({
   // Loader mode (if duration is set)
   return loading ? (
     <div className={`loader-overlay ${fadeOut ? "fade-out" : ""}`}>
-      <div className="loader">
-        {pixels.map((pixel) => (
-          <div
-            key={pixel.id}
-            className="pixel"
-            style={{
-              left: pixel.x,
-              top: pixel.y,
-              backgroundColor: pixel.color,
-            }}
-          ></div>
-        ))}
-      </div>
+      {canvasElement}
     </div>
   ) : (
-    children
+    <>{children}</>
   );
 };
 
