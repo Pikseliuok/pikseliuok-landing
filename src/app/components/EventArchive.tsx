@@ -82,7 +82,7 @@ const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
                 <h3 className="text-2xl font-bold mb-4 mt-8 text-center">
                   TOP {data.topPixelPlacers.length} pikseliuotojai
                 </h3>
-                <div className="backdrop-blur-lg bg-white/60 dark:bg-black/60 rounded-xl shadow-lg p-4 border border-gray-200 dark:border-gray-700">
+                <div className="backdrop-blur-lg bg-white/60 dark:bg-black/60 rounded-xl shadow-lg dark:shadow-black/30 p-4 border border-gray-200 dark:border-gray-700">
                   <div className="max-h-[500px] overflow-y-auto">
                     <table className="w-full">
                       <thead className="sticky top-0 backdrop-blur-lg bg-white/80 dark:bg-black/80">
@@ -128,7 +128,7 @@ const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
 
         <div className="mt-12">
           <h2 className="text-2xl font-bold mb-4 text-center">Atsisiuntimai</h2>
-          <div className="max-w-2xl mx-auto backdrop-blur-lg bg-white/60 dark:bg-black/60 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-700">
+          <div className="max-w-2xl mx-auto backdrop-blur-lg bg-white/60 dark:bg-black/60 rounded-2xl shadow-xl dark:shadow-black/30 p-8 border border-gray-200 dark:border-gray-700">
             <ul className="space-y-2">
               {data.downloads?.map((d, i) => (
                 <DownloadItem

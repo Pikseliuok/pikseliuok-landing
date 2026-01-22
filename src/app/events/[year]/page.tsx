@@ -1,24 +1,7 @@
 "use server";
 import React from "react";
 import NotFound from "@/app/components/NotFound";
-import EventArchive from "@/app/components/EventArchive";
-
-type EventData = {
-  title: string;
-  summary?: string;
-  canvasImageUrl: string;
-  timelapseUrl?: string;
-  stats?: { title: string; value: string }[];
-  contestedPixels?: { coords: string; changes: string; description: string }[];
-  topPixelPlacers?: { username: string; pixelCount: string }[];
-  downloads?: {
-    filename: string;
-    path: string;
-    downloadName: string;
-    size: string;
-  }[];
-  note?: string;
-};
+import EventArchive, { type EventData } from "@/app/components/EventArchive";
 
 export default async function Page({
   params,

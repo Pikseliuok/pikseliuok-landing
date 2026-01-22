@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,10 +7,8 @@ type Suggestion = { label: string; href: string };
 interface NotFoundProps {
   title?: string;
   message?: React.ReactNode;
-  resource?: string;
   subject?: string;
   suggestions?: Suggestion[];
-  // new props for image
   imageSrc?: string;
   imageAlt?: string;
   note?: React.ReactNode;

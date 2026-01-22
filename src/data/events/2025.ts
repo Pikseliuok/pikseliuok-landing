@@ -22,7 +22,7 @@ export const event2025 = {
     },
     {
       coords: "906,708",
-      changes: "151 pakeitimas",
+      changes: "151 pakeitimai",
       description: "Žilvinas Žvagulis",
     },
     { coords: "13,912", changes: "135 pakeitimai", description: "RGB katinas" },
