@@ -106,15 +106,14 @@ const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
                               {index === 0
                                 ? "🥇"
                                 : index === 1
-                                ? "🥈"
-                                : index === 2
-                                ? "🥉"
-                                : index + 1}
+                                  ? "🥈"
+                                  : index === 2
+                                    ? "🥉"
+                                    : index + 1}
                             </td>
                             <td className="py-2 px-4">{user.username}</td>
                             <td className="py-2 px-4 text-right">
-                              {(user.pixelCount as any).toLocaleString?.() ??
-                                user.pixelCount}
+                              {user.pixelCount.toLocaleString()}
                             </td>
                           </tr>
                         ))}

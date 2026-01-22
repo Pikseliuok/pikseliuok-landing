@@ -1,14 +1,7 @@
 "use server";
 import React from "react";
-import Link from "next/link";
-import CanvasViewer from "@/app/components/CanvasViewer";
-import StatCard from "@/app/components/StatCard";
-import ContestPixels from "@/app/components/ContestPixels";
-import DownloadItem from "@/app/components/DownloadItem";
 import NotFound from "@/app/components/NotFound";
 import EventArchive from "@/app/components/EventArchive";
-
-import events from "@/data/events";
 
 type EventData = {
   title: string;
@@ -27,14 +20,18 @@ type EventData = {
   note?: string;
 };
 
-export default async function Page({ params }: { params: { year: string } }) {
-  const year = params.year;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ year: string }>;
+}) {
+  const { year } = await params;
 
   let data: EventData | null = null;
   try {
     const mod = await import(`@/data/events/${year}`);
     data = mod[`event${year}`] ?? mod.default ?? null;
-  } catch (err) {
+  } catch {
     data = null;
   }
 
