@@ -28,7 +28,7 @@ export type EventData = {
 
 const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center backdrop-blur-lg rounded-2xl text-foreground p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center backdrop-blur-sm border bg-white/60 dark:bg-black/60 border-gray-200 dark:border-gray-700 shadow-lg dark:shadow-black/30 rounded-2xl p-4">
       <div className="container mx-auto py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4">{data.title}</h1>
