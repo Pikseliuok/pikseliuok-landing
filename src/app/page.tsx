@@ -10,7 +10,7 @@ const App = () => {
   const parentDomain = process.env.NEXT_PUBLIC_PARENT_DOMAIN || "localhost";
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 backdrop-blur-lg">
+    <div className="max-w-6xl mx-auto px-4 py-8 backdrop-blur-sm border bg-white/60 dark:bg-black/60 border-gray-200 dark:border-gray-700 shadow-lg dark:shadow-black/30 rounded-2xl">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-8 px-4">
         {/* Left Section */}
         <div className="space-y-6 text-center">
