@@ -9,10 +9,12 @@ const Header = () => {
   return (
     <header className="sticky top-4 w-full max-w-6xl mx-auto backdrop-blur-sm bg-white/60 dark:bg-black/60 border border-gray-200 dark:border-gray-700 shadow-lg dark:shadow-black/30 rounded-2xl z-20 mt-4">
       <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
-        <div className="flex items-center space-x-4">
-          <Image src={logo} alt="Pikseliuok Logo" width={40} height={40} />
-          <h1 className="text-2xl font-bold tracking-tight">Pikseliuok</h1>
-        </div>
+        <Link href="/">
+          <div className="flex items-center space-x-4">
+            <Image src={logo} alt="Pikseliuok Logo" width={40} height={40} />
+            <h1 className="text-2xl font-bold tracking-tight">Pikseliuok</h1>
+          </div>
+        </Link>
         <nav>
           <ul className="flex space-x-4 items-center">
             <li>
