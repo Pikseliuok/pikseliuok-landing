@@ -3,19 +3,20 @@ import React, { useEffect, useState } from "react";
 const targetUnixTime = 1774116000;
 
 const Countdown = () => {
-  const [countdown, setCountdown] = useState(
-    targetUnixTime - Math.floor(Date.now() / 1000),
-  );
+  const [countdown, setCountdown] = useState(0);
 
   useEffect(() => {
-    if (countdown > 0) {
-      const timer = setInterval(() => {
-        setCountdown(targetUnixTime - Math.floor(Date.now() / 1000));
-      }, 1000);
+    const updateCountdown = () => {
+      const remaining = targetUnixTime - Math.floor(Date.now() / 1000);
+      setCountdown(remaining > 0 ? remaining : 0);
+    };
 
-      return () => clearInterval(timer);
-    }
-  }, [countdown]);
+    updateCountdown();
+
+    const timer = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   interface TimeParts {
     days: number;

@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import EventArchive from "./components/EventArchive";
-import { event2025 } from "@/data/events/2025";
 import Countdown from "./components/Countdown";
 
 const App = () => {
@@ -27,7 +25,7 @@ const App = () => {
                   className="underline text-blue-400"
                   href="https://www.reddit.com/r/place/"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   r/place
                 </a>{" "}
