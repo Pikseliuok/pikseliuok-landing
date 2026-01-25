@@ -7,7 +7,7 @@ import Countdown from "./components/Countdown";
 
 const App = () => {
   return (
-    <div className="max-w-6xl mx-auto pt-12">
+    <div className="max-w-6xl mx-auto px-4">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-8 backdrop-blur-lg p-4">
         {/* Left Section */}
         <div className="space-y-6 text-center">
@@ -21,7 +21,7 @@ const App = () => {
             />
             <div>
               <h1 className="text-4xl font-bold">Pikseliuok</h1>
-              <p className="mt-3 text-gray-700 dark:text-gray-300 max-w-xl">
+              <p className="mt-3 text-gray-700 dark:text-gray-300 max-w-md">
                 Tai{" "}
                 <a
                   className="underline text-blue-400"
@@ -45,8 +45,8 @@ const App = () => {
             iki projekto pradžios liko
           </div>
 
-          <div className="w-full max-w-4xl rounded-2xl bg-black/40 backdrop-blur-lg">
-            <div className="inline-flex items-center justify-between gap-8 whitespace-nowrap w-max">
+          <div className="max-w-full rounded-2xl">
+            <div className="flex flex-wrap items-center justify-center gap-4">
               <Countdown />
             </div>
           </div>
