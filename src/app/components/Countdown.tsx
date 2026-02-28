@@ -37,10 +37,10 @@ const Countdown = () => {
   const { days, hours, minutes, seconds } = getTimeParts(countdown);
 
   return (
-    <div className="bg-gradient-to-br rounded-2xl w-auto">
+    <div className="bg-gradient-to-br rounded-2xl w-full">
       <div className="relative z-10 flex flex-col items-center space-y-4 text-center text-4xl font-bold">
         {countdown > 0 ? (
-          <div className="flex flex-wrap justify-center overflow-x-auto px-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-fit px-2">
             {[
               { value: days, label: "Dienos" },
               { value: hours, label: "Valandos" },
@@ -49,7 +49,7 @@ const Countdown = () => {
             ].map((unit, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center justify-center p-4 rounded-xl shadow-inner m-2"
+                className="flex flex-col items-center justify-center p-4 rounded-xl shadow-inner"
               >
                 <span className="text-6xl">
                   {unit.value.toString().padStart(2, "0")}
@@ -61,7 +61,7 @@ const Countdown = () => {
             ))}
           </div>
         ) : (
-          <div className="text-3xl">Renginys prasidėjo!</div>
+          <div className="text-3xl w-full px-6 py-4">Renginys prasidėjo!</div>
         )}
       </div>
     </div>

@@ -10,10 +10,10 @@ const App = () => {
   const parentDomain = process.env.NEXT_PUBLIC_PARENT_DOMAIN || "localhost";
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 backdrop-blur-sm border bg-white/60 dark:bg-black/60 border-gray-200 dark:border-gray-700 shadow-lg dark:shadow-black/30 rounded-2xl">
+    <div className="w-full max-w-6xl mx-auto px-4 py-8 backdrop-blur-sm border bg-white/60 dark:bg-black/60 border-gray-200 dark:border-gray-700 shadow-lg dark:shadow-black/30 rounded-2xl">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-8 px-4">
         {/* Left Section */}
-        <div className="space-y-6 text-center">
+        <div className="space-y-6 text-center lg:w-1/2">
           <div className="flex flex-col items-center gap-4">
             <Image
               src="/logo.png"
@@ -43,15 +43,13 @@ const App = () => {
         </div>
 
         {/* Right Section */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center w-full lg:w-1/2">
           <div className="text-md font-bold mb-4">
             iki projekto pradžios liko
           </div>
 
-          <div className="max-w-full rounded-2xl">
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Countdown />
-            </div>
+          <div className="w-full">
+            <Countdown />
           </div>
         </div>
       </div>
