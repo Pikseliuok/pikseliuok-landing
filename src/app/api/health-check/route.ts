@@ -13,6 +13,7 @@ export async function HEAD() {
       return new NextResponse(null, { status: 503 });
     }
   } catch (error) {
+    console.error("Health check failed:", error);
     return new NextResponse(null, { status: 503 });
   }
 }

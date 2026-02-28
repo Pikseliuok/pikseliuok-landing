@@ -33,11 +33,11 @@ const Countdown = () => {
             }, 5000);
           } else {
             // Main site not responding, retry every 30 seconds
-            console.log("Main site not ready yet, will retry...");
+            console.error("Main site not ready yet, will retry...");
             setTimeout(checkAndReload, 30000);
           }
         } catch (error) {
-          console.log("Main site not ready yet, will retry...");
+          console.error("Main site not ready yet, will retry...", error);
           setTimeout(checkAndReload, 30000);
         }
       };
