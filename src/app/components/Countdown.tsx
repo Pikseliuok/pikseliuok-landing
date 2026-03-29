@@ -69,9 +69,9 @@ const Countdown = () => {
   const { days, hours, minutes, seconds } = getTimeParts(countdown);
 
   return (
-    <div className="bg-gradient-to-br rounded-2xl w-full">
+    <div className="bg-linear-to-br rounded-2xl w-full">
       <div className="relative z-10 flex flex-col items-center space-y-4 text-center text-4xl font-bold">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 min-w-full md:min-w-[32rem] w-fit px-2 mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 min-w-full md:min-w-lg w-fit px-2 mx-auto">
           {countdown > 0 ? (
             <>
               {[
@@ -94,7 +94,7 @@ const Countdown = () => {
               ))}
             </>
           ) : (
-            <div className="col-span-2 md:col-span-4 flex flex-col items-center justify-center p-4 min-w-full md:min-w-[32rem] w-fit">
+            <div className="col-span-2 md:col-span-4 flex flex-col items-center justify-center p-4 min-w-full md:min-w-lg w-fit">
               <div className="text-3xl whitespace-nowrap">
                 Renginys prasidėjo!
               </div>

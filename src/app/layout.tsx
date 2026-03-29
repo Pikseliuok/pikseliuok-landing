@@ -52,8 +52,8 @@ export default function RootLayout({
         <AnimatedPixels asBackground />
         <div className="relative z-10 flex flex-col min-h-screen">
           <Header />
-          <main className="flex-grow flex justify-center items-start px-4 py-8">
-            <div className="rounded-2xl shadow-2xl">{children}</div>
+          <main className="grow flex justify-center items-start px-4 py-8">
+            <div className="w-full">{children}</div>
           </main>
           <Footer />
         </div>
