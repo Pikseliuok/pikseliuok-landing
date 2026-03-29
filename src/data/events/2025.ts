@@ -85,5 +85,11 @@ export const event2025 = {
       size: "(2.91KB)",
     },
   ],
+  clips: [
+    "ShakingAdorableWhaleWow-6lwzIQ27VTIxGcSJ",
+    "ArbitraryEnthusiasticBasenjiLitty-EbH99fgLD6Iep3iP",
+    "EnjoyableSmoggyBeaverSMOrc-ZqNZ3tnPgVQwt7_s",
+    "TriangularUnusualWaterOSkomodo-Iu3ROicUnaPh6icP",
+  ],
   note: "Tai dar ne pabaiga...",
 };

@@ -23,12 +23,13 @@ export type EventData = {
   contestedPixels?: PixelData[];
   topPixelPlacers?: Leader[];
   downloads?: Download[];
+  clips?: string[];
   note?: string;
 };
 
 const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center backdrop-blur-sm border bg-white/60 dark:bg-black/60 border-gray-200 dark:border-gray-700 shadow-lg dark:shadow-black/30 rounded-2xl p-4">
+    <div className="w-full max-w-6xl mx-auto min-h-screen flex flex-col items-center justify-center backdrop-blur-sm border bg-white/60 dark:bg-black/60 border-gray-200 dark:border-gray-700 shadow-lg dark:shadow-black/30 rounded-2xl p-4">
       <div className="container mx-auto py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4">{data.title}</h1>
@@ -43,7 +44,7 @@ const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
           <div className="mb-16">
             <div className="flex justify-center">
               <div
-                className="max-w-[1000px] w-full relative"
+                className="max-w-250 w-full relative"
                 style={{ aspectRatio: "1/1" }}
               >
                 <video
@@ -55,6 +56,28 @@ const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
                   <source src={data.timelapseUrl} type="video/mp4" />
                 </video>
               </div>
+            </div>
+          </div>
+        )}
+
+        {data.clips && data.clips.length > 0 && (
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold mb-6 text-center">Momentai</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {data.clips.map((clip) => (
+                <div
+                  key={clip}
+                  className="aspect-video bg-gray-200 dark:bg-gray-700 rounded-xl shadow"
+                >
+                  <iframe
+                    src={`https://clips.twitch.tv/embed?clip=${clip}&parent=${typeof window !== "undefined" ? window.location.hostname : "pikseliuok.lt"}`}
+                    height="100%"
+                    width="100%"
+                    allowFullScreen
+                    className="rounded-xl"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -83,7 +106,7 @@ const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
                   TOP {data.topPixelPlacers.length} pikseliuotojai
                 </h3>
                 <div className="backdrop-blur-lg bg-white/60 dark:bg-black/60 rounded-xl shadow-lg dark:shadow-black/30 p-4 border border-gray-200 dark:border-gray-700">
-                  <div className="max-h-[500px] overflow-y-auto">
+                  <div className="max-h-125 overflow-y-auto">
                     <table className="w-full">
                       <thead className="sticky top-0 backdrop-blur-lg bg-white/80 dark:bg-black/80">
                         <tr className="border-b border-gray-300 dark:border-gray-700">
