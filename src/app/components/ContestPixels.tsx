@@ -1,4 +1,5 @@
 import React from "react";
+import Panel from "@/components/ui/Panel";
 
 interface PixelData {
   coords: string;
@@ -12,7 +13,7 @@ interface ContestPixelsProps {
 
 const ContestPixels: React.FC<ContestPixelsProps> = ({ pixels }) => {
   return (
-    <div className="backdrop-blur-lg bg-white/60 dark:bg-black/60 dark:shadow-black/30 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-4 mt-6">
+    <Panel className="mt-6 rounded-xl p-4 backdrop-blur-lg">
       <ul className="space-y-3">
         {pixels.map((pixel, index) => (
           <li key={index} className="flex flex-col">
@@ -28,7 +29,7 @@ const ContestPixels: React.FC<ContestPixelsProps> = ({ pixels }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </Panel>
   );
 };
 
