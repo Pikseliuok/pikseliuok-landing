@@ -2,16 +2,16 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="w-full backdrop-blur-lg bg-white/60 dark:bg-black/60 text-foreground shadow-lg rounded-t-2xl mt-8 relative z-20">
-      <div className="max-w-4xl mx-auto text-center py-4 px-6">
+    <footer className="relative z-20 mt-8 w-full rounded-t-2xl bg-white/60 shadow-lg backdrop-blur-lg dark:bg-black/60">
+      <div className="mx-auto max-w-4xl px-6 py-4 text-center">
         <p>&copy; {new Date().getFullYear()} Pikseliuok</p>
-        <p className="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
           Made with ❤️ by{" "}
           <a
             href="https://github.com/Karolinskis"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:text-blue-700 hover:underline transition-colors"
+            className="text-blue-500 transition-colors hover:text-blue-700 hover:underline"
           >
             Karolinskis
           </a>

@@ -1,6 +1,6 @@
 "use server";
 import React from "react";
-import NotFound from "@/app/components/NotFound";
+import NotFound from "@/components/ui/NotFound";
 import EventArchive from "@/features/events/components/EventArchive";
 import type { EventData } from "@/features/events/types";
 

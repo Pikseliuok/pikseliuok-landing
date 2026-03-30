@@ -5,7 +5,7 @@ const Timelapse = () => {
     <div className="mb-16">
       <div className="flex justify-center">
         <div
-          className="max-w-[1000px] w-full relative"
+          className="max-w-250 w-full relative"
           style={{ aspectRatio: "1/1" }}
         >
           <video
