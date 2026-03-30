@@ -5,9 +5,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 
-import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
-import AnimatedPixels from "@/app/components/AnimatedPixels";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import AnimatedPixels from "@/components/layout/AnimatedPixels";
 
 const roboto = Roboto({
   weight: ["400", "700"],

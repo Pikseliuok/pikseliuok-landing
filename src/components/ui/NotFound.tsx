@@ -29,40 +29,35 @@ const NotFound: React.FC<NotFoundProps> = ({
     <div
       className={`fixed inset-0 flex items-center justify-center p-4 ${className}`}
     >
-      <div className="bg-white/70 dark:bg-black/60 backdrop-blur-lg rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 max-w-4xl w-full">
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-          {/* Text area */}
-          <div className="w-full md:w-2/3 text-center md:text-left">
-            <h1 className="text-3xl font-bold mb-2">
+      <div className="w-full max-w-4xl rounded-2xl border border-gray-200 bg-white/70 p-6 shadow-lg backdrop-blur-lg dark:border-gray-700 dark:bg-black/60">
+        <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
+          <div className="w-full text-center md:w-2/3 md:text-left">
+            <h1 className="mb-2 text-3xl font-bold">
               {title}
               {subject ? <span className="font-mono"> {subject}</span> : null}
             </h1>
             {message && (
-              <p className="text-gray-700 dark:text-gray-300 mb-4">{message}</p>
+              <p className="mb-4 text-gray-700 dark:text-gray-300">{message}</p>
             )}
-
-            <div className="flex flex-wrap gap-3 mb-4 justify-center md:justify-start">
+            <div className="mb-4 flex flex-wrap justify-center gap-3 md:justify-start">
               {suggestions.map((s, i) => (
                 <Link
                   key={i}
                   href={s.href}
-                  className="px-4 py-2 rounded-lg bg-white/40 dark:bg-black/40 border hover:opacity-95"
+                  className="rounded-lg border bg-white/40 px-4 py-2 hover:opacity-95 dark:bg-black/40"
                 >
                   {s.label}
                 </Link>
               ))}
             </div>
-
             {note && (
-              <p className="mt-2 text-xs text-gray-500 dark:text-gray-400 text-center md:text-left">
+              <p className="mt-2 text-center text-xs text-gray-500 dark:text-gray-400 md:text-left">
                 {note}
               </p>
             )}
           </div>
-
-          {/* Image area */}
-          <div className="w-full md:w-1/3 flex-shrink-0 md:order-last order-first">
-            <div className="w-full h-44 md:h-48 relative rounded-lg overflow-hidden">
+          <div className="order-first w-full shrink-0 md:order-last md:w-1/3">
+            <div className="relative h-44 w-full overflow-hidden rounded-lg md:h-48">
               <Image
                 src={imageSrc}
                 alt={imageAlt}

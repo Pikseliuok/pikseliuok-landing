@@ -7,7 +7,7 @@ const gridSize = 20;
 interface AnimatedPixelsProps {
   asBackground?: boolean;
   children?: React.ReactNode;
-  duration?: number; // Only used for loader
+  duration?: number;
 }
 
 const AnimatedPixels: React.FC<AnimatedPixelsProps> = ({
@@ -33,7 +33,7 @@ const AnimatedPixels: React.FC<AnimatedPixelsProps> = ({
           0,
           0,
           canvas.width,
-          canvas.height
+          canvas.height,
         );
       }
 
@@ -92,7 +92,6 @@ const AnimatedPixels: React.FC<AnimatedPixelsProps> = ({
     );
   }
 
-  // Loader mode (if duration is set)
   return loading ? (
     <div className={`loader-overlay ${fadeOut ? "fade-out" : ""}`}>
       {canvasElement}

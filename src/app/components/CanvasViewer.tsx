@@ -23,7 +23,7 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
       "ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
         ("msMaxTouchPoints" in navigator &&
-          (navigator as Navigator).maxTouchPoints > 0)
+          (navigator as Navigator).maxTouchPoints > 0),
     );
   }, []);
 
@@ -72,14 +72,14 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
         preventScroll as EventListener,
         {
           capture: true,
-        }
+        },
       );
       document.removeEventListener(
         "touchstart",
         preventScroll as EventListener,
         {
           capture: true,
-        }
+        },
       );
       document.removeEventListener("wheel", preventScroll as EventListener, {
         capture: true,
@@ -89,7 +89,7 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
         preventScroll as EventListener,
         {
           capture: true,
-        }
+        },
       );
     };
   }, [isZoomed]);
@@ -248,7 +248,7 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
     <div className="flex flex-col items-center w-full">
       <div
         ref={containerRef}
-        className={`w-full max-w-[1000px] relative overflow-hidden ${
+        className={`w-full max-w-250 relative overflow-hidden ${
           isZoomed ? "cursor-crosshair" : "cursor-zoom-in"
         }`}
         style={{ aspectRatio: "1/1" }}

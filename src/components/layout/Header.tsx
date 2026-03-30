@@ -7,8 +7,8 @@ const logo = "/logo.png";
 
 const Header = () => {
   return (
-    <header className="sticky top-4 w-full max-w-6xl mx-auto backdrop-blur-sm bg-white/60 dark:bg-black/60 border border-gray-200 dark:border-gray-700 shadow-lg dark:shadow-black/30 rounded-2xl z-20 mt-4">
-      <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+    <header className="sticky top-4 z-20 mx-auto mt-4 w-full max-w-6xl rounded-2xl border border-gray-200 bg-white/60 shadow-lg backdrop-blur-sm dark:border-gray-700 dark:bg-black/60 dark:shadow-black/30">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/">
           <div className="flex items-center space-x-4">
             <Image src={logo} alt="Pikseliuok Logo" width={40} height={40} />
@@ -16,7 +16,7 @@ const Header = () => {
           </div>
         </Link>
         <nav>
-          <ul className="flex space-x-4 items-center">
+          <ul className="flex items-center space-x-4">
             <li>
               <Link
                 href="https://instagram.com/pikseliuok"
@@ -25,7 +25,7 @@ const Header = () => {
               >
                 <FaInstagram
                   size={24}
-                  className="text-pink-500 hover:text-pink-600 transition-colors cursor-pointer"
+                  className="cursor-pointer text-pink-500 transition-colors hover:text-pink-600"
                 />
               </Link>
             </li>
@@ -37,7 +37,7 @@ const Header = () => {
               >
                 <FaDiscord
                   size={24}
-                  className="text-blue-500 hover:text-blue-600 transition-colors cursor-pointer"
+                  className="cursor-pointer text-blue-500 transition-colors hover:text-blue-600"
                 />
               </Link>
             </li>
@@ -49,7 +49,7 @@ const Header = () => {
               >
                 <FaGithub
                   size={24}
-                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
+                  className="cursor-pointer text-gray-700 transition-colors hover:text-black dark:text-gray-300 dark:hover:text-white"
                 />
               </Link>
             </li>
