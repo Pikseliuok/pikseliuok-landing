@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
 import CanvasViewer from "@/app/components/CanvasViewer";
-import StatCard from "@/app/components/StatCard";
 import ContestPixels from "@/app/components/ContestPixels";
-import DownloadItem from "@/app/components/DownloadItem";
+import DownloadItem from "@/components/ui/DownloadItem";
+import Panel from "@/components/ui/Panel";
+import StatCard from "@/components/ui/StatCard";
 
 type PixelData = { coords: string; changes: string; description: string };
 type Leader = { username: string; pixelCount: string };
@@ -105,7 +106,7 @@ const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
                 <h3 className="text-2xl font-bold mb-4 mt-8 text-center">
                   TOP {data.topPixelPlacers.length} pikseliuotojai
                 </h3>
-                <div className="backdrop-blur-lg bg-white/60 dark:bg-black/60 rounded-xl shadow-lg dark:shadow-black/30 p-4 border border-gray-200 dark:border-gray-700">
+                <Panel className="rounded-xl p-4 backdrop-blur-lg">
                   <div className="max-h-125 overflow-y-auto">
                     <table className="w-full">
                       <thead className="sticky top-0 backdrop-blur-lg bg-white/80 dark:bg-black/80">
@@ -143,7 +144,7 @@ const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </Panel>
               </>
             )}
           </div>
@@ -151,7 +152,7 @@ const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
 
         <div className="mt-12">
           <h2 className="text-2xl font-bold mb-4 text-center">Atsisiuntimai</h2>
-          <div className="max-w-2xl mx-auto backdrop-blur-lg bg-white/60 dark:bg-black/60 rounded-2xl shadow-xl dark:shadow-black/30 p-8 border border-gray-200 dark:border-gray-700">
+          <Panel className="mx-auto max-w-2xl rounded-2xl p-8 shadow-xl backdrop-blur-lg">
             <ul className="space-y-2">
               {data.downloads?.map((d, i) => (
                 <DownloadItem
@@ -163,7 +164,7 @@ const EventArchive: React.FC<{ data: EventData }> = ({ data }) => {
                 />
               ))}
             </ul>
-          </div>
+          </Panel>
         </div>
 
         {data.note && (

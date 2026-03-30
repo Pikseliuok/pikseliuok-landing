@@ -14,16 +14,16 @@ const DownloadItem = ({
   size,
 }: DownloadItemProps) => {
   return (
-    <li className="flex justify-between items-center hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded transition-colors">
+    <li className="flex items-center justify-between rounded px-3 py-2 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700">
       <a
         href={path}
         download={downloadName}
-        className="flex justify-between items-center w-full"
+        className="flex w-full items-center justify-between"
       >
         <span className="flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 mr-2 text-blue-500 dark:text-blue-400"
+            className="mr-2 h-5 w-5 text-blue-500 dark:text-blue-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -37,7 +37,7 @@ const DownloadItem = ({
           </svg>
           {filename}
         </span>
-        <span className="text-gray-600 dark:text-gray-400 text-sm">{size}</span>
+        <span className="text-sm text-gray-600 dark:text-gray-400">{size}</span>
       </a>
     </li>
   );
