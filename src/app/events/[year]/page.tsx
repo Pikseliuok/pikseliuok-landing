@@ -1,7 +1,8 @@
 "use server";
 import React from "react";
 import NotFound from "@/app/components/NotFound";
-import EventArchive, { type EventData } from "@/app/components/EventArchive";
+import EventArchive from "@/features/events/components/EventArchive";
+import type { EventData } from "@/features/events/types";
 
 export default async function Page({
   params,
