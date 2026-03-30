@@ -1,12 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface EventClipsProps {
   clips: string[];
 }
 
 const EventClips = ({ clips }: EventClipsProps) => {
+  const [host, setHost] = useState<string | null>(null);
+
+  useEffect(() => {
+    setHost(window.location.hostname);
+  }, []);
+
   if (clips.length === 0) {
     return null;
   }
@@ -20,13 +26,15 @@ const EventClips = ({ clips }: EventClipsProps) => {
             key={clip}
             className="aspect-video rounded-xl bg-gray-200 shadow dark:bg-gray-700"
           >
-            <iframe
-              src={`https://clips.twitch.tv/embed?clip=${clip}&parent=${window.location.hostname}`}
-              height="100%"
-              width="100%"
-              allowFullScreen
-              className="rounded-xl"
-            />
+            {host && (
+              <iframe
+                src={`https://clips.twitch.tv/embed?clip=${clip}&parent=${host}`}
+                height="100%"
+                width="100%"
+                allowFullScreen
+                className="rounded-xl"
+              />
+            )}
           </div>
         ))}
       </div>
