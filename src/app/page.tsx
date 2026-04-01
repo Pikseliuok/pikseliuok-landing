@@ -50,7 +50,11 @@ const App = () => {
                 src="/events/2025/placemap.png"
                 alt="Pikseliuok 2025 drobė"
                 fill
+                unoptimized
                 className="object-cover"
+                style={{
+                  imageRendering: "pixelated",
+                }}
               />
             </div>
             <div className="p-6 flex flex-col grow">
@@ -89,7 +93,11 @@ const App = () => {
                 src="/events/2026/placemap.png"
                 alt="Pikseliuok 2026 drobė"
                 fill
+                unoptimized
                 className="object-cover"
+                style={{
+                  imageRendering: "pixelated",
+                }}
               />
             </div>
             <div className="p-6 flex flex-col grow">
