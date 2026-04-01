@@ -83,11 +83,15 @@ const App = () => {
             </div>
           </div>
 
-          {/* 2026 — coming soon */}
+          {/* 2026 */}
           <div className="border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden flex flex-col">
-            <div className="aspect-video bg-gray-100 dark:bg-gray-800 flex flex-col items-center justify-center gap-2 text-gray-400">
-              <MdArchive className="h-14 w-14 opacity-25" />
-              <span className="text-sm">Archyvas ruošiamas</span>
+            <div className="aspect-video relative bg-gray-100 dark:bg-gray-800">
+              <Image
+                src="/events/2026/placemap.png"
+                alt="Pikseliuok 2026 drobė"
+                fill
+                className="object-cover"
+              />
             </div>
             <div className="p-6 flex flex-col grow">
               <h3 className="text-xl font-bold">Pikseliuok 2026</h3>
