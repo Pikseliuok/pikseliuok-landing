@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaDiscord, FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
 import { event2025 } from "@/data/events/2025";
+import { event2026 } from "@/data/events/2026";
 
 const App = () => {
   return (
@@ -103,10 +104,28 @@ const App = () => {
             <div className="p-6 flex flex-col grow">
               <h3 className="text-xl font-bold">Pikseliuok 2026</h3>
               <p className="mt-1 text-sm text-gray-400 dark:text-gray-500">
-                Archyvas bus paskelbtas netrukus
+                {event2026.summary}
               </p>
-              <div className="mt-auto pt-5 text-sm text-gray-400 cursor-not-allowed select-none">
-                Netrukus...
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                {event2026.stats?.slice(0, 2).map((stat) => (
+                  <div
+                    key={stat.title}
+                    className="bg-white/60 dark:bg-gray-700/60 rounded-xl p-3"
+                  >
+                    <div className="font-bold text-lg">{stat.value}</div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400">
+                      {stat.title}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-auto pt-5">
+                <Link
+                  href="/events/2026"
+                  className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-semibold transition-colors"
+                >
+                  Peržiūrėti archyvą <FaArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
           </div>
