@@ -2,7 +2,7 @@ export const event2025 = {
   title: "Pikseliuok 2025",
   summary: "1000×1000 drobė. 34 spalvos. 6,244 kūrėjai.",
   canvasImageUrl: "/events/2025/placemap.png",
-  timelapseUrl: "/events/2025/timelapse.mp4",
+  timelapseUrl: "https://cdn.pikseliuok.lt/2025/timelapse.mp4",
   stats: [
     { title: "Iš viso pikselių", value: "1,899,950" },
     { title: "Registruoti vartotojai", value: "6,244" },
@@ -68,13 +68,13 @@ export const event2025 = {
     },
     {
       filename: "timelapse.mp4",
-      path: "/events/2025/timelapse.mp4",
+      path: "https://cdn.pikseliuok.lt/2025/timelapse.mp4",
       downloadName: "timelapse.mp4",
       size: "(66.2MB)",
     },
     {
       filename: "pixels.sanit.log (anonimizuota)",
-      path: "/events/2025/pixels.sanit.log",
+      path: "https://cdn.pikseliuok.lt/2025/pixels.sanit.log",
       downloadName: "pixels.sanit.log",
       size: "(87.2MB)",
     },
