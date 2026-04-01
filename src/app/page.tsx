@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MdArchive } from "react-icons/md";
 import { FaDiscord, FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
 import { event2025 } from "@/data/events/2025";
 
