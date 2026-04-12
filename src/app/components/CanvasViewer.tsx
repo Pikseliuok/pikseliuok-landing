@@ -1,31 +1,36 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
+import { useStaticBrowserValue } from "@/lib/useStaticBrowserValue";
 
 interface CanvasViewerProps {
   canvasImageUrl: string;
 }
+
+const getTouchDeviceSnapshot = () =>
+  typeof window !== "undefined" &&
+  ("ontouchstart" in window ||
+    navigator.maxTouchPoints > 0 ||
+    ("msMaxTouchPoints" in navigator &&
+      ((navigator as Navigator & { msMaxTouchPoints?: number })
+        .msMaxTouchPoints ?? 0) > 0));
+
+const getTouchDeviceServerSnapshot = () => false;
 
 const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [transformOrigin, setTransformOrigin] = useState("center center");
   // const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   // const [showCoords, setShowCoords] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const zoomLevel = 4;
 
-  // Detect touch device
-  useEffect(() => {
-    setIsTouchDevice(
-      "ontouchstart" in window ||
-        navigator.maxTouchPoints > 0 ||
-        ("msMaxTouchPoints" in navigator &&
-          (navigator as Navigator).maxTouchPoints > 0),
-    );
-  }, []);
+  const isTouchDevice = useStaticBrowserValue(
+    getTouchDeviceSnapshot,
+    getTouchDeviceServerSnapshot,
+  );
 
   // Prevent scroll on page when zoomed
   useEffect(() => {

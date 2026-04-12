@@ -1,17 +1,21 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useStaticBrowserValue } from "@/lib/useStaticBrowserValue";
 
 interface EventClipsProps {
   clips: string[];
 }
 
-const EventClips = ({ clips }: EventClipsProps) => {
-  const [host, setHost] = useState<string | null>(null);
+const getHostSnapshot = () =>
+  typeof window !== "undefined" ? window.location.hostname : null;
 
-  useEffect(() => {
-    setHost(window.location.hostname);
-  }, []);
+const getHostServerSnapshot = () => null;
+
+const EventClips = ({ clips }: EventClipsProps) => {
+  const host = useStaticBrowserValue(
+    getHostSnapshot,
+    getHostServerSnapshot,
+  );
 
   if (clips.length === 0) {
     return null;
