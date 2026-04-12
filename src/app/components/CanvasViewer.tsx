@@ -17,7 +17,9 @@ const getTouchDeviceSnapshot = () =>
   ("ontouchstart" in window ||
     navigator.maxTouchPoints > 0 ||
     ("msMaxTouchPoints" in navigator &&
-      (navigator as Navigator).maxTouchPoints > 0));
+      ((navigator as Navigator & { msMaxTouchPoints?: number })
+        .msMaxTouchPoints ??
+        0) > 0));
 
 const getTouchDeviceServerSnapshot = () => false;
 
