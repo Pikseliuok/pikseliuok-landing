@@ -1,10 +1,5 @@
 "use client";
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-} from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { useStaticBrowserValue } from "@/lib/useStaticBrowserValue";
 
@@ -18,8 +13,7 @@ const getTouchDeviceSnapshot = () =>
     navigator.maxTouchPoints > 0 ||
     ("msMaxTouchPoints" in navigator &&
       ((navigator as Navigator & { msMaxTouchPoints?: number })
-        .msMaxTouchPoints ??
-        0) > 0));
+        .msMaxTouchPoints ?? 0) > 0));
 
 const getTouchDeviceServerSnapshot = () => false;
 
@@ -113,9 +107,9 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
     }, 150); // Same duration as the CSS transition
   }, []);
 
-  // Desktop-specific event listener for mouse-up outside the container
   useEffect(() => {
-    if (isZoomed) {
+    // Only needed for desktop when zoomed
+    if (isZoomed && !isTouchDevice) {
       const handleGlobalMouseUp = () => {
         resetZoom();
       };
@@ -126,7 +120,7 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
         document.removeEventListener("mouseup", handleGlobalMouseUp);
       };
     }
-  }, [isZoomed, resetZoom]);
+  }, [isZoomed, isTouchDevice, resetZoom]);
 
   // // Calculate image coordinates from pointer position
   // const calculateImageCoords = (clientX: number, clientY: number) => {
@@ -201,7 +195,7 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
   const handlePointerUp = () => {
     if (isTouchDevice) return;
 
-    if (isZoomed) {
+    if (!isTouchDevice && isZoomed) {
       resetZoom();
     }
   };
