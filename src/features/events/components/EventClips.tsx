@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useSyncExternalStore } from "react";
 
 interface EventClipsProps {
   clips: string[];
 }
 
 const EventClips = ({ clips }: EventClipsProps) => {
-  const [host, setHost] = useState<string | null>(null);
-
-  useEffect(() => {
-    setHost(window.location.hostname);
-  }, []);
+  const host = useSyncExternalStore(
+    () => () => {}, // No subscription needed; hostname doesn't change during session
+    () => (typeof window !== "undefined" ? window.location.hostname : null),
+    () => null, // Server-side: no hostname available
+  );
 
   if (clips.length === 0) {
     return null;

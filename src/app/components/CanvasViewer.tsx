@@ -1,5 +1,11 @@
 "use client";
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useSyncExternalStore,
+} from "react";
 import Image from "next/image";
 
 interface CanvasViewerProps {
@@ -11,21 +17,21 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
   const [transformOrigin, setTransformOrigin] = useState("center center");
   // const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   // const [showCoords, setShowCoords] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const zoomLevel = 4;
 
-  // Detect touch device
-  useEffect(() => {
-    setIsTouchDevice(
-      "ontouchstart" in window ||
+  const isTouchDevice = useSyncExternalStore(
+    () => () => {}, // No subscription needed; touch capability doesn't change
+    () =>
+      typeof window !== "undefined" &&
+      ("ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
         ("msMaxTouchPoints" in navigator &&
-          (navigator as Navigator).maxTouchPoints > 0),
-    );
-  }, []);
+          (navigator as Navigator).maxTouchPoints > 0)),
+    () => false, // Server-side: assume no touch
+  );
 
   // Prevent scroll on page when zoomed
   useEffect(() => {
@@ -102,9 +108,9 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
     }, 150); // Same duration as the CSS transition
   }, []);
 
+  // Desktop-specific event listener for mouse-up outside the container
   useEffect(() => {
-    // Only needed for desktop when zoomed
-    if (isZoomed && !isTouchDevice) {
+    if (isZoomed) {
       const handleGlobalMouseUp = () => {
         resetZoom();
       };
@@ -115,7 +121,7 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
         document.removeEventListener("mouseup", handleGlobalMouseUp);
       };
     }
-  }, [isZoomed, isTouchDevice, resetZoom]);
+  }, [isZoomed, resetZoom]);
 
   // // Calculate image coordinates from pointer position
   // const calculateImageCoords = (clientX: number, clientY: number) => {
@@ -190,7 +196,7 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
   const handlePointerUp = () => {
     if (isTouchDevice) return;
 
-    if (!isTouchDevice && isZoomed) {
+    if (isZoomed) {
       resetZoom();
     }
   };
