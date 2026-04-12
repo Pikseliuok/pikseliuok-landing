@@ -4,13 +4,22 @@ import React, {
   useEffect,
   useRef,
   useCallback,
-  useSyncExternalStore,
 } from "react";
 import Image from "next/image";
+import { useStaticBrowserValue } from "@/lib/useStaticBrowserValue";
 
 interface CanvasViewerProps {
   canvasImageUrl: string;
 }
+
+const getTouchDeviceSnapshot = () =>
+  typeof window !== "undefined" &&
+  ("ontouchstart" in window ||
+    navigator.maxTouchPoints > 0 ||
+    ("msMaxTouchPoints" in navigator &&
+      (navigator as Navigator).maxTouchPoints > 0));
+
+const getTouchDeviceServerSnapshot = () => false;
 
 const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
   const [isZoomed, setIsZoomed] = useState(false);
@@ -22,15 +31,9 @@ const CanvasViewer: React.FC<CanvasViewerProps> = ({ canvasImageUrl }) => {
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const zoomLevel = 4;
 
-  const isTouchDevice = useSyncExternalStore(
-    () => () => {}, // No subscription needed; touch capability doesn't change
-    () =>
-      typeof window !== "undefined" &&
-      ("ontouchstart" in window ||
-        navigator.maxTouchPoints > 0 ||
-        ("msMaxTouchPoints" in navigator &&
-          (navigator as Navigator).maxTouchPoints > 0)),
-    () => false, // Server-side: assume no touch
+  const isTouchDevice = useStaticBrowserValue(
+    getTouchDeviceSnapshot,
+    getTouchDeviceServerSnapshot,
   );
 
   // Prevent scroll on page when zoomed

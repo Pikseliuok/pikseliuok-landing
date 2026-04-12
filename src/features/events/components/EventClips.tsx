@@ -1,16 +1,20 @@
 "use client";
 
-import React, { useSyncExternalStore } from "react";
+import { useStaticBrowserValue } from "@/lib/useStaticBrowserValue";
 
 interface EventClipsProps {
   clips: string[];
 }
 
+const getHostSnapshot = () =>
+  typeof window !== "undefined" ? window.location.hostname : null;
+
+const getHostServerSnapshot = () => null;
+
 const EventClips = ({ clips }: EventClipsProps) => {
-  const host = useSyncExternalStore(
-    () => () => {}, // No subscription needed; hostname doesn't change during session
-    () => (typeof window !== "undefined" ? window.location.hostname : null),
-    () => null, // Server-side: no hostname available
+  const host = useStaticBrowserValue(
+    getHostSnapshot,
+    getHostServerSnapshot,
   );
 
   if (clips.length === 0) {
