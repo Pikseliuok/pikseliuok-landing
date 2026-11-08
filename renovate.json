@@ -1,0 +1,58 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:recommended",
+        ":semanticCommits"
+    ],
+    "minimumReleaseAge": "3 days",
+    "dependencyDashboard": true,
+    "lockFileMaintenance": {
+        "enabled": true,
+        "automerge": true
+    },
+    "packageRules": [
+        {
+            "description": "Next.js and its companion packages are pinned to the same version, so they move together",
+            "matchPackageNames": [
+                "next",
+                "eslint-config-next",
+                "@next/*"
+            ],
+            "groupName": "next"
+        },
+        {
+            "description": "React runtime and its type packages must stay in sync",
+            "matchPackageNames": [
+                "react",
+                "react-dom",
+                "@types/react",
+                "@types/react-dom"
+            ],
+            "groupName": "react"
+        },
+        {
+            "matchPackageNames": [
+                "tailwindcss",
+                "@tailwindcss/*"
+            ],
+            "groupName": "tailwind"
+        },
+        {
+            "matchPackageNames": [
+                "@vercel/*"
+            ],
+            "groupName": "vercel"
+        },
+        {
+            "description": "Low-risk dev tooling updates merge themselves once checks pass",
+            "matchDepTypes": [
+                "devDependencies"
+            ],
+            "matchUpdateTypes": [
+                "minor",
+                "patch"
+            ],
+            "automerge": true
+        }
+    ]
+}
